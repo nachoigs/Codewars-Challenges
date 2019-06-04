@@ -1,14 +1,11 @@
 def sum_consecutives(s):
-    sum = s[0]
-    result = s[0] if (not range(len(s)-1)) else []
-    for i in range(len(s)-1):
-        if s[i] == s[i+1]:
-            sum += s[i+1]
-            if (i == len(s)-2):
-                result.append(sum)
+    prev_num = None
+    result = []
+    for num in s:
+        if num == prev_num:
+            result[-1] += num
         else:
-            result.append(sum)
-            sum = s[i+1]
-            if (i == len(s)-2):
-                result.append(sum)
+            result.append(num)
+        prev_num = num
+
     return result
